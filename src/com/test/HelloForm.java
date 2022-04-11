@@ -32,7 +32,6 @@ public class HelloForm extends HttpServlet {
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
-
 //    protected void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        // 设置响应内容类型
 //        response.setContentType("text/html;charset=UTF-8");
@@ -49,7 +48,6 @@ public class HelloForm extends HttpServlet {
 //    }
 
 
-    // 处理 POST 方法请求的方法
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 为名字和姓氏创建 Cookie
         Cookie name = new Cookie("name", URLEncoder.encode(request.getParameter("name"), "UTF-8"));// 中文转码
@@ -60,8 +58,8 @@ public class HelloForm extends HttpServlet {
         url.setMaxAge(60*60*24);
 
         // 在响应头中添加两个 Cookie
-        response.addCookie(name);
-        response.addCookie(url);
+        response.addCookie( name );
+        response.addCookie( url );
 
         // 设置响应内容类型
         response.setContentType("text/html;charset=UTF-8");
@@ -74,7 +72,14 @@ public class HelloForm extends HttpServlet {
                 "\n</li>" + "  <li><b>站點 URL：</b>：" + request.getParameter("url") + "\n</li>" + "</ul>\n" + "</body></html>");
     }
 
-    public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//    public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        doGet(request, response);
+//    }
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
         doGet(request, response);
     }
 }
